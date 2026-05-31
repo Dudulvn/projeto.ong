@@ -3,13 +3,7 @@
 CENTRO UNIVERSITÁRIO LA SALLE DO RIO DE JANEIRO - Unilasalle - RJ
 Sistema Web para Gerenciamento de Resgate e Adoção de Animais – Arca Proteção
 
-## Integrantes do Grupo
-- Caique Menezes Graupera Lourenço – 10223050
-- Diego Carvalho Bahia – 1023247
-- Eduardo de Lima Varandas Nogueira – 1022838
-- Lucas Deano – 1022872
 
----
 
 # Como executar o sistema
 
