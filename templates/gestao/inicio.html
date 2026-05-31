@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Painel - Arca Proteção{% endblock %}
+
+{% block conteudo %}
+<h1 class="mb-4">Painel da Instituição</h1>
+<p class="text-muted">Bem-vindo, {{ request.user.username }}.</p>
+
+<div class="row g-3 mb-4">
+    <div class="col-md-4">
+        <div class="card card-resumo">
+            <div class="card-body">
+                <h5 class="card-title">Total de animais</h5>
+                <p class="display-6 mb-0">{{ total_animais }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-resumo">
+            <div class="card-body">
+                <h5 class="card-title">Disponíveis para adoção</h5>
+                <p class="display-6 mb-0">{{ total_disponiveis }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card card-resumo">
+            <div class="card-body">
+                <h5 class="card-title">Animais adotados</h5>
+                <p class="display-6 mb-0">{{ total_adotados }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-resumo">
+            <div class="card-body">
+                <h5 class="card-title">Adotantes cadastrados</h5>
+                <p class="display-6 mb-0">{{ total_adotantes }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card card-resumo">
+            <div class="card-body">
+                <h5 class="card-title">Adoções registradas</h5>
+                <p class="display-6 mb-0">{{ total_adocoes }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-wrap gap-2">
+    <a href="{% url 'cadastrar_animal' %}" class="btn btn-success">Cadastrar animal</a>
+    <a href="{% url 'cadastrar_tratamento' %}" class="btn btn-primary">Registrar tratamento</a>
+    <a href="{% url 'cadastrar_adotante' %}" class="btn btn-primary">Cadastrar adotante</a>
+    <a href="{% url 'cadastrar_adocao' %}" class="btn btn-primary">Registrar adoção</a>
+</div>
+{% endblock %}

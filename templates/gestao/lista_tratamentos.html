@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Tratamentos - Arca Proteção{% endblock %}
+
+{% block conteudo %}
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h1 class="mb-0">Tratamentos Veterinários</h1>
+    <a href="{% url 'cadastrar_tratamento' %}" class="btn btn-success">Cadastrar tratamento</a>
+</div>
+
+{% if tratamentos %}
+    <div class="table-responsive">
+        <table class="table table-striped table-hover align-middle">
+            <thead>
+                <tr>
+                    <th>Animal</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Veterinário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tratamento in tratamentos %}
+                    <tr>
+                        <td>{{ tratamento.animal.nome }}</td>
+                        <td>{{ tratamento.data|date:'d/m/Y' }}</td>
+                        <td>{{ tratamento.descricao|truncatechars:60 }}</td>
+                        <td>{{ tratamento.veterinario }}</td>
+                        <td>
+                            <a href="{% url 'editar_tratamento' tratamento.id %}" class="btn btn-sm btn-primary">Editar</a>
+                            <a href="{% url 'excluir_tratamento' tratamento.id %}" class="btn btn-sm btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">Nenhum tratamento cadastrado.</div>
+{% endif %}
+{% endblock %}

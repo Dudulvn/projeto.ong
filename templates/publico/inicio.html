@@ -1,0 +1,119 @@
+{% extends 'base_publico.html' %}
+
+{% block titulo %}{{ dados_ong.nome_completo }} - Adoção Responsável{% endblock %}
+
+{% block conteudo %}
+<section class="bloco-hero" id="inicio">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <p class="rotulo-secao">Adoção responsável</p>
+                <h1 class="titulo-principal">Acolhimento e reabilitação de animais em Niterói</h1>
+                <p class="texto-introducao">{{ dados_ong.missao }}</p>
+                <div class="acoes-hero">
+                    <a href="{{ dados_ong.instagram_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
+                        <i class="fa-brands fa-instagram"></i> Quero adotar
+                    </a>
+                    <a href="#adotar" class="btn btn-secundario link-ancora">Ver animais disponíveis</a>
+                </div>
+            </div>
+            <div class="col-lg-4 mt-4 mt-lg-0">
+                <aside class="painel-informativo">
+                    <h2 class="h5">Sobre o trabalho</h2>
+                    <p>{{ dados_ong.descricao }}</p>
+                    {% if total_disponiveis %}
+                        <p class="destaque-numerico mb-0">
+                            <span>{{ total_disponiveis }}</span>
+                            animal{{ total_disponiveis|pluralize:"is" }} disponível{{ total_disponiveis|pluralize:"is" }}
+                        </p>
+                    {% endif %}
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bloco-secao" id="sobre">
+    <div class="container">
+        <div class="cabecalho-secao">
+            <p class="rotulo-secao">Institucional</p>
+            <h2 class="titulo-secao">Sobre a ONG</h2>
+            <p class="texto-secao">{{ dados_ong.descricao }}</p>
+        </div>
+
+        <div class="grade-informacoes">
+            <article class="item-informacao">
+                <h3>Missão</h3>
+                <p>{{ dados_ong.missao }}</p>
+            </article>
+            <article class="item-informacao">
+                <h3>Atuação</h3>
+                <p>ONG de proteção animal em {{ dados_ong.cidade }}, dedicada ao acolhimento e reabilitação de cãezinhos.</p>
+            </article>
+            <article class="item-informacao">
+                <h3>Transparência</h3>
+                <p>CNPJ: {{ dados_ong.cnpj }}</p>
+                <p class="mb-0">{{ dados_ong.razao_social }}</p>
+            </article>
+        </div>
+
+        <div class="aviso-institucional">
+            <p class="mb-0">{{ dados_ong.aviso }}</p>
+        </div>
+    </div>
+</section>
+
+{% include 'publico/partials/secao_animais.html' %}
+
+<section class="bloco-secao bloco-secao-claro" id="como-adotar">
+    <div class="container">
+        <div class="cabecalho-secao">
+            <p class="rotulo-secao">Processo</p>
+            <h2 class="titulo-secao">Como adotar</h2>
+        </div>
+
+        <ol class="lista-passos">
+            <li>
+                <strong>Escolha um animal</strong>
+                <span>Consulte os animais disponíveis e identifique qual se encaixa no seu perfil.</span>
+            </li>
+            <li>
+                <strong>Entre em contato</strong>
+                <span>Fale conosco pelo Instagram {{ dados_ong.instagram_usuario }}.</span>
+            </li>
+            <li>
+                <strong>Adoção responsável</strong>
+                <span>Nossa equipe orienta as etapas para garantir o bem-estar do animal.</span>
+            </li>
+        </ol>
+
+        <div class="mt-4">
+            <a href="{{ dados_ong.instagram_url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primario">
+                <i class="fa-brands fa-instagram"></i> Iniciar contato
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="bloco-secao" id="apoie">
+    <div class="container">
+        <div class="linha-apoie">
+            <div>
+                <p class="rotulo-secao">Doações</p>
+                <h2 class="titulo-secao">Apoie a Arca Proteção</h2>
+                <p class="texto-secao mb-0">
+                    Doações via Pix auxiliam no cuidado, tratamento e reabilitação dos animais acolhidos pela ONG.
+                </p>
+            </div>
+            <div class="painel-pix">
+                <label for="chave-pix">Chave Pix (CNPJ)</label>
+                <p class="chave-pix" id="chave-pix">{{ dados_ong.chave_pix }}</p>
+                <button type="button" class="btn btn-primario" id="btn-copiar-pix">
+                    <i class="fa-regular fa-copy"></i> Copiar chave
+                </button>
+                <span class="feedback-pix" id="feedback-pix"></span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
